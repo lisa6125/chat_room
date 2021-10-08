@@ -73,7 +73,8 @@ const httpServer = createServer(app);
 const io = new Server(httpServer,{
   cors: {
     origin: ['https://alice-chat-test.herokuapp.com/','https://lisa6125.github.io/'],
-    methods: ["GET", "POST"]
+    methods: ["GET", "POST"],
+    credentials: true
   }
 });
 //----------------------------------------------------------------------------

@@ -71,27 +71,16 @@ app.use('/users', routerUser)
 
 const httpServer = createServer(app);
 const io = new Server(httpServer);
-io.use(cors({
-  origin (origin, callback) {
-    // 如果是 Postman 之類的後端, 允許
-    if (origin === undefined) {
-      callback(null, true)
-    } else {
-      if (process.env.DEV === 'true') {
-        // 如果是本機開發, 接受所有請求
-        callback(null, true)
-      } else if (origin.includes('github')) {
-        // 如果不是本機開發, 但是是從 github 過來的請求, 允許
-        callback(null, true)
-      } else {
-        // 如果不是本機開發, 也不是從 github 過來, 拒絕
-        callback(new Error('Not allowed'), false)
-      }
-    }
-  },
-  credentials: true
-}))
-io.set('trust proxy', 1)
+const corsOptions = {
+  origin: [
+    'https://alice-chat-test.herokuapp.com/',
+    'https://lisa6125.github.io/chat_room/',
+  ],
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+
+io.use(cors(corsOptions));
 //----------------------------------------------------------------------------
 // 加入線上人數計數
 let onlineCount = 0;

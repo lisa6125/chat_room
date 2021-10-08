@@ -1,5 +1,5 @@
 
-socket = io('ws://alice-chat-test.herokuapp.com/', {
+socket = io('https://alice-chat-test.herokuapp.com/', {
   withCredentials: true,
   extraHeaders: {
     "my-custom-header": "abcd"

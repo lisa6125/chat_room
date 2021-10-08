@@ -1,10 +1,10 @@
-var connectionOptions =  {
-            "force new connection" : true,
-            "reconnectionAttempts": "Infinity", 
-            "timeout" : 10000,                  
-            "transports" : ["websocket"]
-        };
-socket = io('ws://alice-chat-test.herokuapp.com/',connectionOptions);
+
+socket = io('ws://alice-chat-test.herokuapp.com/', {
+  withCredentials: true,
+  extraHeaders: {
+    "my-custom-header": "abcd"
+  }
+});
 
 socket.on('message', (obj) => {
   // io.emit("message", '應聲蟲:' + obj);

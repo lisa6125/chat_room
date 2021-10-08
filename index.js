@@ -6,7 +6,7 @@ import connectMongo from 'connect-mongo'
 import cors from 'cors'
 import session from 'express-session'
 
-import { createServer } from "http";
+import { createServer } from "https";
 import { Server } from "socket.io";
 
 

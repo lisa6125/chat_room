@@ -42,14 +42,6 @@ app.use(cors({
   credentials: true
 }))
 
-const httpServer = createServer(app);
-const io = new Server(httpServer,{
-  cors: {
-    origin: ['https://alice-chat-test.herokuapp.com/','https://lisa6125.github.io/'],
-    methods: ["GET", "POST"]
-  }
-});
-
 const MongoStore = connectMongo(session)
 
 const sessionSettings = {
@@ -76,6 +68,14 @@ app.use(session(sessionSettings))
 app.set('trust proxy', 1)
 
 app.use('/users', routerUser)
+
+const httpServer = createServer(app);
+const io = new Server(httpServer,{
+  cors: {
+    origin: ['https://alice-chat-test.herokuapp.com/','https://lisa6125.github.io/'],
+    methods: ["GET", "POST"]
+  }
+});
 //----------------------------------------------------------------------------
 // 加入線上人數計數
 let onlineCount = 0;

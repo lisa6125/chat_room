@@ -4,7 +4,7 @@ var connectionOptions =  {
             "timeout" : 10000,                  
             "transports" : ["websocket"]
         };
-socket = io('https://alice-chat-test.herokuapp.com/',connectionOptions);
+socket = io('ws://alice-chat-test.herokuapp.com/',connectionOptions);
 
 socket.on('message', (obj) => {
   // io.emit("message", '應聲蟲:' + obj);

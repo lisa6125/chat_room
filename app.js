@@ -1,4 +1,4 @@
-socket = io.connect('ws://localhost:5501');
+socket = io.connect('ws://alice-chat-test.herokuapp.com/');
 
 socket.on('message', (obj) => {
   // io.emit("message", '應聲蟲:' + obj);
@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (ok) socket.emit("send", formData);
       console.log(formData)
-      axios.post('http://127.0.0.1:5501/users/', formData)
+      axios.post('https://alice-chat-test.herokuapp.com/users/', formData)
         .then((res)=>{console.log(res)})
       .catch((err)=>{console.log(err)})
     });

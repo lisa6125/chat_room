@@ -74,6 +74,7 @@ const io = new Server(httpServer,{
   cors: {
     origin: ['https://alice-chat-test.herokuapp.com/','https://lisa6125.github.io/'],
     methods: ["GET", "POST"],
+    allowedHeaders: ["my-custom-header"],
     credentials: true
   }
 });

@@ -70,12 +70,13 @@ app.set('trust proxy', 1)
 app.use('/users', routerUser)
 
 const httpServer = createServer(app);
-const io = new Server(httpServer);
+const io = new Server(httpServer,corsOptions);
 const corsOptions = {
   origin: [
     'https://alice-chat-test.herokuapp.com/',
     'https://lisa6125.github.io/chat_room/',
   ],
+  cors:true,
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   allowedHeaders: ['Content-Type', 'Authorization'],
 };

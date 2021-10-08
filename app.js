@@ -1,4 +1,4 @@
-socket = io.connect('ws://alice-chat-test.herokuapp.com/');
+socket = io('https://alice-chat-test.herokuapp.com/');
 
 socket.on('message', (obj) => {
   // io.emit("message", '應聲蟲:' + obj);

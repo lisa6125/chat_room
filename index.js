@@ -18,14 +18,6 @@ mongoose.connect(process.env.DBURL, { useNewUrlParser: true, useUnifiedTopology:
 
 const app = express()
 
-const httpServer = createServer(app);
-const io = new Server(httpServer,{
-  cors: {
-    origin: ['https://alice-chat-test.herokuapp.com/','https://lisa6125.github.io/'],
-    methods: ["GET", "POST"]
-  }
-});
-
 app.use(bodyParser.json())
 
 // 跨域設定
@@ -49,6 +41,14 @@ app.use(cors({
   },
   credentials: true
 }))
+
+const httpServer = createServer(app);
+const io = new Server(httpServer,{
+  cors: {
+    origin: ['https://alice-chat-test.herokuapp.com/','https://lisa6125.github.io/'],
+    methods: ["GET", "POST"]
+  }
+});
 
 const MongoStore = connectMongo(session)
 
